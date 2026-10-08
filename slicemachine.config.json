@@ -1,0 +1,7 @@
+{
+  "repositoryName": "fizziio",
+  "adapter": "@slicemachine/adapter-next",
+  "libraries": ["./src/slices"],
+  "localSliceSimulatorURL": "http://localhost:9999/slice-simulator",
+  "apiEndpoint": ""
+}
