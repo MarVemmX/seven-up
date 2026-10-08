@@ -124,13 +124,13 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
       id="carousel"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="carousel relative grid h-screen grid-rows-[auto,4fr,auto] justify-center overflow-hidden bg-white py-12 text-white"
+      className="carousel relative grid min-h-[100dvh] py-8 sm:py-12 md:h-screen grid-rows-[auto,4fr,auto] justify-center overflow-hidden bg-white text-white"
     >
       <div className="background pointer-events-none absolute inset-0 bg-[#0B3C85] opacity-60 transition-colors" />
 
       <WavyCircles className="wavy-circles-outer wavy-circles-inner absolute left-1/2 top-1/2 h-[120vmin] -translate-x-1/2 -translate-y-1/2 text-[#0B3C85]" />
 
-      <h2 className="relative text-center text-5xl font-extrabold uppercase tracking-tight md:text-6xl">
+      <h2 className="relative text-center text-3xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight px-4">
         <PrismicText field={slice.primary.heading} />
       </h2>
 
@@ -142,7 +142,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
           label="Previous Flavor"
         />
         {/* Can */}
-        <View className="aspect-square h-[70vmin] min-h-40 cursor-grab active:cursor-grabbing">
+        <View className="aspect-square h-[52vmin] sm:h-[62vmin] md:h-[70vmin] min-h-36 cursor-grab active:cursor-grabbing">
           <Center position={[0, 0, 1.5]}>
             <FloatingCan
               ref={sodaCanRef}
@@ -167,12 +167,16 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
         />
       </div>
 
-      <div className="text-area relative mx-auto text-center px-4">
+      <div className="text-area relative mx-auto text-center px-4 max-w-xl">
         <div className="text-wrapper tracking-wide">
-          <p className="text-4xl font-black md:text-6xl text-white drop-shadow-md">{FLAVORS[currentFlavorIndex].name}</p>
-          <p className="mt-2 text-xl font-bold uppercase tracking-wider text-yellow-300 md:text-2xl">{FLAVORS[currentFlavorIndex].sub}</p>
+          <p className="text-2xl sm:text-4xl md:text-6xl font-black text-white drop-shadow-md">
+            {FLAVORS[currentFlavorIndex].name}
+          </p>
+          <p className="mt-1 sm:mt-2 text-xs sm:text-base md:text-2xl font-bold uppercase tracking-wider text-yellow-300">
+            {FLAVORS[currentFlavorIndex].sub}
+          </p>
         </div>
-        <div className="mt-2 text-xl font-medium opacity-90">
+        <div className="mt-1 sm:mt-2 text-xs sm:text-sm md:text-base font-medium opacity-90 leading-relaxed">
           <PrismicRichText field={slice.primary.price_copy} />
         </div>
       </div>
@@ -196,7 +200,7 @@ function ArrowButton({
   return (
     <button
       onClick={onClick}
-      className="size-12 border-2 border-white bg-black/40 p-3 text-white opacity-90 transition-all duration-200 hover:scale-105 hover:bg-white hover:text-black active:scale-95 md:size-16 lg:size-18 shadow-2xl"
+      className="size-10 sm:size-12 md:size-16 lg:size-18 border-2 border-white bg-black/40 p-2 sm:p-3 text-white opacity-90 transition-all duration-200 hover:scale-105 hover:bg-white hover:text-black active:scale-95 shadow-2xl"
     >
       <ArrowIcon className={clsx(direction === "right" && "-scale-x-100")} />
       <span className="sr-only">{label}</span>
