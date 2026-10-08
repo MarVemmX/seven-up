@@ -109,17 +109,17 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       className="hero opacity-0"
     >
       {isDesktop && (
-        <View className="hero-scene pointer-events-none sticky top-0 z-50 -mt-[100vh] hidden h-screen w-full md:block">
+        <View className="hero-scene pointer-events-none sticky top-0 z-50 -mt-[100vh] hidden h-screen w-screen md:block">
           <Scene />
           <Bubbles count={300} speed={2} repeat={true} />
         </View>
       )}
 
       <div className="grid">
-        <div className="grid min-h-[100dvh] pt-20 pb-12 md:py-0 md:h-screen place-items-center">
+        <div className="grid h-screen place-items-center">
           <div className="grid auto-rows-min place-items-center text-center px-4 max-w-2xl mx-auto">
             {/* 7UP Hero Image Artwork */}
-            <div className="relative mx-auto mb-2 w-full max-w-[200px] sm:max-w-[300px] md:max-w-[420px] aspect-[1536/1024]">
+            <div className="relative mx-auto mb-2 w-full max-w-[260px] sm:max-w-[340px] md:max-w-[420px] aspect-[1536/1024]">
               <Image
                 src="/7uphero.png"
                 alt="7UP Hero"
@@ -129,29 +129,29 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
               />
             </div>
 
-            <h1 className="hero-header text-xl sm:text-3xl md:text-4xl font-black uppercase tracking-widest text-white drop-shadow-md">
+            <h1 className="hero-header text-2xl font-black uppercase tracking-widest text-white drop-shadow-md sm:text-3xl md:text-4xl">
               <TextSplitter
                 text={asText(slice.primary.heading).replace(/^7UP\s*/i, "") || "BOTTLING CO."}
                 wordDisplayStyle="block"
                 className="hero-header-word"
               />
             </h1>
-            <div className="hero-subheading mt-2 text-xs sm:text-base md:text-xl font-extrabold uppercase tracking-wider text-yellow-300 drop-shadow-sm">
+            <div className="hero-subheading mt-2 text-base font-extrabold uppercase tracking-wider text-yellow-300 drop-shadow-sm sm:text-lg md:text-xl">
               <PrismicRichText field={slice.primary.subheading} />
             </div>
-            <div className="hero-body mt-2 max-w-lg text-xs sm:text-sm md:text-base font-medium text-white/90 leading-relaxed">
+            <div className="hero-body mt-2 max-w-lg text-xs font-medium text-white/90 sm:text-sm md:text-base leading-relaxed">
               <PrismicRichText field={slice.primary.body} />
             </div>
             <Button
               buttonLink={slice.primary.button_link}
               buttonText={slice.primary.button_text}
-              className="hero-button mt-4 sm:mt-5 shadow-2xl"
+              className="hero-button mt-5 shadow-2xl"
             />
           </div>
         </div>
 
-        <div className="text-side relative z-[80] grid min-h-[100dvh] py-14 md:py-0 md:h-screen items-center gap-6 px-4 md:grid-cols-2">
-          <div className="relative max-w-md mx-auto aspect-[1280/687] w-full overflow-hidden border-2 border-white shadow-xl md:hidden">
+        <div className="text-side relative z-[80] grid h-screen items-center gap-6 px-4 md:grid-cols-2">
+          <div className="relative aspect-[1280/687] w-full overflow-hidden border-2 border-white shadow-xl md:hidden">
             <Image
               src="/labels/pepsi.jpg"
               alt="7UP Bottling Co. Lineup"
@@ -160,10 +160,10 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             />
           </div>
           <div>
-            <h2 className="text-side-heading text-balance text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-black uppercase text-white drop-shadow-lg leading-tight">
+            <h2 className="text-side-heading text-balance text-5xl font-black uppercase text-white drop-shadow-lg md:text-6xl lg:text-8xl">
               <TextSplitter text={asText(slice.primary.second_heading)} />
             </h2>
-            <div className="text-side-body mt-4 sm:mt-6 max-w-xl text-balance text-sm sm:text-lg md:text-xl font-medium text-white/95 leading-relaxed">
+            <div className="text-side-body mt-6 max-w-xl text-balance text-xl font-medium text-white/95 leading-relaxed">
               <PrismicRichText field={slice.primary.second_body} />
             </div>
           </div>

@@ -154,7 +154,7 @@ const AlternatingText = ({ slice }: AlternatingTextProps): JSX.Element => {
             />
           </View>
 
-          {/* Sticky Header Inspection Button - visible only on desktop, hidden on mobile to eliminate clutter */}
+          {/* Sticky Header Inspection Button - visible on desktop, hidden on mobile to avoid duplicate buttons */}
           <div className="pointer-events-none sticky top-6 z-[120] hidden md:flex w-full justify-center">
             <button
               onClick={() => setIsModalOpen(true)}
@@ -172,40 +172,40 @@ const AlternatingText = ({ slice }: AlternatingTextProps): JSX.Element => {
             return (
               <div
                 key={asText(item.heading)}
-                className="alternating-section relative grid min-h-[100dvh] py-12 md:py-0 md:h-screen place-items-center gap-x-12 md:grid-cols-2 pointer-events-none"
+                className="alternating-section relative grid h-screen place-items-center gap-x-12 md:grid-cols-2 pointer-events-none"
               >
-                {/* Text Content Card - Single prominent inspection button on mobile */}
+                {/* Text Content Card */}
                 <div
                   className={clsx(
                     isCanOnRight ? "col-start-1" : "md:col-start-2",
-                    "pointer-events-auto border-2 border-black/15 bg-white/60 p-5 sm:p-8 backdrop-blur-lg transition-transform hover:scale-[1.01] shadow-xl max-w-md md:max-w-none mx-auto w-full",
+                    "pointer-events-auto border-2 border-black/15 bg-white/40 p-8 backdrop-blur-lg transition-transform hover:scale-[1.01] max-md:bg-white/50 shadow-xl",
                   )}
                 >
-                  <div className="mb-2 inline-block border border-sky-950/30 bg-white/70 px-2.5 py-0.5 text-[10px] sm:text-xs font-mono uppercase tracking-widest text-sky-900">
+                  <div className="mb-2 inline-block border border-sky-950/30 bg-white/60 px-2.5 py-0.5 text-xs font-mono uppercase tracking-widest text-sky-900">
                     SBC Lineup • 0{index + 1}
                   </div>
-                  <h2 className="text-balance text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase text-sky-950 leading-tight">
+                  <h2 className="text-balance text-4xl font-black uppercase md:text-5xl lg:text-6xl text-sky-950">
                     <PrismicText field={item.heading} />
                   </h2>
-                  <div className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg font-medium leading-relaxed text-sky-900/90">
+                  <div className="mt-4 text-lg font-medium leading-relaxed text-sky-900/90">
                     <PrismicRichText field={item.body} />
                   </div>
-                  <div className="mt-5 sm:mt-6">
+                  <div className="mt-6">
                     <button
                       onClick={() => openModalFor(index)}
-                      className="border-2 border-sky-950 bg-sky-950 px-4 sm:px-5 py-2 sm:py-2.5 text-xs font-black uppercase tracking-wider text-white transition-all hover:bg-white hover:text-sky-950 shadow-md active:scale-95"
+                      className="border-2 border-sky-950 bg-sky-950 px-5 py-2.5 text-xs font-black uppercase tracking-wider text-white transition-all hover:bg-white hover:text-sky-950 shadow-md active:scale-95"
                     >
                       Inspect {drink.shortName} Label
                     </button>
                   </div>
                 </div>
 
-                {/* Interactive Clickable Can Hit-Area in the Can Column - badge visible on desktop, clean transparent hit target on mobile */}
+                {/* Interactive Clickable Can Hit-Area in the Can Column - self-stretch to catch clicks across entire half */}
                 <div
                   onClick={() => openModalFor(index)}
                   className={clsx(
                     isCanOnRight ? "md:col-start-2" : "md:col-start-1",
-                    "pointer-events-auto flex h-full min-h-[40vh] md:min-h-[60vh] w-full self-stretch justify-self-stretch cursor-pointer flex-col items-center justify-end pb-12 md:pb-24 group select-none",
+                    "pointer-events-auto flex h-full min-h-[60vh] w-full self-stretch justify-self-stretch cursor-pointer flex-col items-center justify-end pb-24 group select-none",
                   )}
                   title={`Click can to inspect ${drink.name} label`}
                 >
@@ -219,9 +219,9 @@ const AlternatingText = ({ slice }: AlternatingTextProps): JSX.Element => {
         </div>
       </div>
 
-      {/* Liquid Glass Label Modal - Fully mobile responsive with scrollable viewport */}
+      {/* Liquid Glass Label Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center p-3 sm:p-6 md:p-8">
+        <div className="fixed inset-0 z-[200] flex items-center justify-center p-3 sm:p-4 md:p-8">
           {/* Liquid Glass Blurred Backdrop */}
           <div
             ref={backdropRef}
@@ -243,34 +243,34 @@ const AlternatingText = ({ slice }: AlternatingTextProps): JSX.Element => {
             <div className="pointer-events-none absolute left-0 right-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-white/80 to-transparent" />
 
             {/* Top Bar: Brand Spec Header & Close Button */}
-            <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 border-b-2 border-white/20 pb-3 sm:pb-4">
+            <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 border-b-2 border-white/20 pb-4">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="border border-white/40 bg-white/10 px-2.5 py-0.5 font-mono text-[10px] sm:text-xs uppercase tracking-widest text-white/90">
-                    SBC 330ml Can Spec
+                  <span className="border border-white/40 bg-white/10 px-3 py-1 font-mono text-xs uppercase tracking-widest text-white/90">
+                    SBC Specification • 330ml Can
                   </span>
                   <span
-                    className="border border-white/40 px-2 py-0.5 text-[10px] sm:text-xs font-black uppercase tracking-wider text-white"
+                    className="border border-white/40 px-2.5 py-0.5 text-xs font-black uppercase tracking-wider text-white"
                     style={{ backgroundColor: activeDrink.accentColor }}
                   >
                     {activeDrink.shortName}
                   </span>
                 </div>
-                <h3 className="mt-1.5 text-xl font-black uppercase tracking-tight text-white sm:text-2xl md:text-3xl">
+                <h3 className="mt-2 text-2xl font-black uppercase tracking-tight text-white md:text-3xl">
                   {activeDrink.name} Label
                 </h3>
               </div>
 
               <button
                 onClick={closeModal}
-                className="flex items-center gap-1.5 border-2 border-white/60 bg-white/10 px-3 py-1.5 text-[11px] sm:text-xs font-black uppercase tracking-widest text-white transition-all hover:bg-white hover:text-sky-950 active:scale-95"
+                className="flex items-center gap-2 border-2 border-white/60 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-widest text-white transition-all hover:bg-white hover:text-sky-950 active:scale-95"
               >
                 ✕ Close
               </button>
             </div>
 
             {/* Label Display with Liquid Glass Frame */}
-            <div className="relative z-10 mt-4 sm:mt-6 overflow-hidden border-2 border-white/30 bg-black/40 shadow-2xl backdrop-blur-md">
+            <div className="relative z-10 mt-6 overflow-hidden border-2 border-white/30 bg-black/40 shadow-2xl backdrop-blur-md">
               {/* Ambient backlight matching brand */}
               <div
                 className="pointer-events-none absolute -inset-6 opacity-30 blur-2xl transition-all duration-500"
@@ -292,17 +292,17 @@ const AlternatingText = ({ slice }: AlternatingTextProps): JSX.Element => {
             </div>
 
             {/* Bottom Bar: Switch Label Tabs */}
-            <div className="relative z-10 mt-4 sm:mt-6 flex flex-wrap items-center justify-between gap-2.5 border-t-2 border-white/20 pt-3 sm:pt-4">
-              <span className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-white/70">
+            <div className="relative z-10 mt-6 flex flex-wrap items-center justify-between gap-3 border-t-2 border-white/20 pt-4">
+              <span className="text-xs font-mono uppercase tracking-widest text-white/70">
                 Switch Label:
               </span>
-              <div className="flex flex-wrap gap-1.5 sm:gap-2">
+              <div className="flex flex-wrap gap-2">
                 {SBC_DRINKS.map((drink, idx) => (
                   <button
                     key={drink.id}
                     onClick={() => setCurrentDrinkIndex(idx)}
                     className={clsx(
-                      "border px-2.5 py-1 text-[11px] sm:text-xs uppercase tracking-wider transition-all",
+                      "border px-3 py-1.5 text-xs uppercase tracking-wider transition-all",
                       idx === currentDrinkIndex
                         ? "border-white bg-white font-black text-sky-950 shadow-md"
                         : "border-white/30 bg-white/10 font-bold text-white/80 hover:bg-white/25 hover:text-white",
