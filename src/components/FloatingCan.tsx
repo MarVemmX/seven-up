@@ -6,11 +6,13 @@ import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import gsap from "gsap";
 
-import { SodaCan, SodaCanProps } from "@/components/SodaCan";
+import { SodaCanProps } from "@/components/SodaCan";
+import GlassBottle from "@/components/GlassBottle";
 import SodaBurst, { SodaBurstRef } from "@/components/SodaBurst";
 
 type FloatingCanProps = {
   flavor?: SodaCanProps["flavor"];
+  scale?: number;
   floatSpeed?: number;
   rotationIntensity?: number;
   floatIntensity?: number;
@@ -30,6 +32,7 @@ const FloatingCan = forwardRef<THREE.Group, FloatingCanProps>(
   (
     {
       flavor = "blackCherry",
+      scale,
       floatSpeed = 1.5,
       rotationIntensity = 1,
       floatIntensity = 1,
@@ -124,7 +127,7 @@ const FloatingCan = forwardRef<THREE.Group, FloatingCanProps>(
               onClick={handleClick}
             >
               {children}
-              <SodaCan flavor={flavor} />
+              <GlassBottle flavor={flavor} scale={scale} />
             </group>
           </group>
           <SodaBurst ref={burstRef} />
