@@ -14,27 +14,47 @@ const BigText = ({ slice }: BigTextProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="min-h-screen w-screen overflow-hidden bg-[#004B93] text-[#FEE832] flex items-center justify-center py-20"
+      className="relative w-full max-w-full overflow-hidden bg-[#003B7A] py-16 sm:py-24 md:py-32 text-[#FEE832] flex items-center justify-center border-t-2 border-white/20"
     >
-      <h2 className="grid w-full gap-[2vw] text-center font-black uppercase leading-[.8] tracking-tighter">
-        <div className="text-[22vw] md:text-[17vw] text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
-          7UP BOTTLING
-        </div>
-        <div className="flex flex-wrap items-center justify-center gap-x-[2.5vw] text-[10vw] md:text-[6vw] font-extrabold tracking-normal">
-          <span className="text-sky-300 drop-shadow">PEPSI</span>
-          <span className="text-white/60">•</span>
-          <span className="text-emerald-300 drop-shadow">7UP</span>
-          <span className="text-white/60">•</span>
-          <span className="text-lime-300 drop-shadow">MTN DEW</span>
-          <span className="text-white/60">•</span>
-          <span className="text-orange-400 drop-shadow">MIRINDA</span>
-          <span className="text-white/60">•</span>
-          <span className="text-rose-300 drop-shadow">DR PEPPER</span>
-        </div>
-        <div className="text-[22vw] md:text-[17vw] text-[#E31837] drop-shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
-          REFRESHMENT
-        </div>
-      </h2>
+      {/* Subtle radial spotlight */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.12)_0%,transparent_70%)]" />
+
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 className="grid w-full gap-4 sm:gap-6 md:gap-8 font-black uppercase">
+          {/* Top Line */}
+          <div className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white tracking-tighter drop-shadow-[0_10px_25px_rgba(0,0,0,0.5)] leading-tight">
+            7UP BOTTLING
+          </div>
+
+          {/* Middle Line - 5 Powerhouse Brands */}
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm md:text-base font-black tracking-wider uppercase">
+            <span className="border-2 border-sky-400/60 bg-sky-950/80 px-3.5 py-1.5 text-sky-300 shadow-md">
+              PEPSI
+            </span>
+            <span className="hidden text-white/40 sm:inline">•</span>
+            <span className="border-2 border-emerald-400/60 bg-emerald-950/80 px-3.5 py-1.5 text-emerald-300 shadow-md">
+              7UP
+            </span>
+            <span className="hidden text-white/40 sm:inline">•</span>
+            <span className="border-2 border-lime-400/60 bg-lime-950/80 px-3.5 py-1.5 text-lime-300 shadow-md">
+              MTN DEW
+            </span>
+            <span className="hidden text-white/40 sm:inline">•</span>
+            <span className="border-2 border-orange-400/60 bg-orange-950/80 px-3.5 py-1.5 text-orange-400 shadow-md">
+              MIRINDA
+            </span>
+            <span className="hidden text-white/40 sm:inline">•</span>
+            <span className="border-2 border-rose-400/60 bg-rose-950/80 px-3.5 py-1.5 text-rose-300 shadow-md">
+              DR PEPPER
+            </span>
+          </div>
+
+          {/* Bottom Line */}
+          <div className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-[#E31837] tracking-tighter drop-shadow-[0_10px_25px_rgba(0,0,0,0.5)] leading-tight">
+            REFRESHMENT
+          </div>
+        </h2>
+      </div>
     </section>
   );
 };

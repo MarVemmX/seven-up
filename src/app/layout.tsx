@@ -29,6 +29,11 @@ export const metadata: Metadata = {
     description:
       "Interactive 3D Beverage Showcase featuring Pepsi, 7UP, Mountain Dew, Mirinda, and Dr Pepper.",
   },
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({
